@@ -14,13 +14,13 @@ const fetchWithRetry = async <T>(url: string, retries: number = 3): Promise<T> =
 }
 
 const fetchProducts = (retries: number = 3): Promise<Product[]> => {
-	const API_ENDPOINT = process.env.NEXT_API_ENDPOINT
-	return fetchWithRetry<Product[]>(`${API_ENDPOINT}/products/`, retries)
+	const API_URL = process.env.NEXT_API_URL
+	return fetchWithRetry<Product[]>(`${API_URL}/products/`, retries)
 }
 
 const fetchCategories = (retries: number = 3): Promise<Category[]> => {
-	const API_ENDPOINT = process.env.NEXT_API_ENDPOINT
-	return fetchWithRetry<Category[]>(`${API_ENDPOINT}/categories/`, retries)
+	const API_URL = process.env.NEXT_API_URL
+	return fetchWithRetry<Category[]>(`${API_URL}/categories/`, retries)
 }
 
 // Combined handler for products and categories
