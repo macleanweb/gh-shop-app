@@ -13,7 +13,7 @@ export default function AddToCartButton({ productId }: { productId: number }) {
 				setCartId(data)
 			}
 			queryClient.invalidateQueries({
-				queryKey: ['cart'],
+				queryKey: ['cart', cartData?.id],
 			})
 		},
 		onError: (error) => {

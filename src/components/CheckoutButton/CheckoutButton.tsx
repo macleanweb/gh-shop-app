@@ -18,7 +18,7 @@ export function CheckoutButton() {
 		},
 	})
 
-	if (cartData?.status === 'PURCHASED') return <p className="my-4">Order purchased successfully!</p>
+	if (cartData?.status === 'PURCHASED') return <p className="my-4">🎉 Thank You! 🎉</p>
 	if (mutation.isError) return <p className="my-4">Error purchasing order</p>
 
 	return (
