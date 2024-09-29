@@ -32,6 +32,13 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({ children
 	const [cartLoading, setCartLoading] = useState(false)
 	const [cartError, setCartError] = useState(false)
 
+	useEffect(() => {
+		const savedCartId = localStorage.getItem('cartId')
+		if (savedCartId) {
+			setCartId(Number(savedCartId))
+		}
+	}, [])
+
 	const { data, isLoading, isError } = useQuery({
 		queryKey: ['cart', cartId],
 		queryFn: async () => fetchCart(cartId),
@@ -51,6 +58,14 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({ children
 	useEffect(() => {
 		setCartError(isError)
 	}, [isError])
+
+	useEffect(() => {
+		if (cartId !== null) {
+			localStorage.setItem('cartId', String(cartId))
+		} else {
+			localStorage.removeItem('cartId') // Remove cartId if null
+		}
+	}, [cartId])
 
 	const openCart = () => setIsCartOpen(true)
 	const closeCart = () => setIsCartOpen(false)
