@@ -23,7 +23,7 @@ export function CheckoutButton() {
 
 	return (
 		<button
-			className="px-4 py-2 my-4 bg-pink-800 text-white rounded hover:bg-pink-900"
+			className="px-4 py-2 my-4 w-full bg-pink-800 text-white rounded hover:bg-pink-900"
 			disabled={mutation.isPending || !cartId}
 			onClick={() => mutation.mutate()}
 		>

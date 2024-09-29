@@ -18,7 +18,7 @@ export function Cart() {
 				isCartOpen ? 'translate-x-0' : 'translate-x-full'
 			}`}
 		>
-			<div className="p-4">
+			<div className="flex flex-col h-full p-4">
 				<button
 					className="absolute top-2 right-2 px-3 py-1 bg-pink-800 text-white rounded-full hover:bg-pink-900 transition duration-200"
 					onClick={closeCart}
@@ -26,17 +26,22 @@ export function Cart() {
 					X
 				</button>
 				<h2 className="text-lg font-bold">Your Cart</h2>
-				{!productsInCart || productsInCart.length === 0 ? (
-					<p>Your cart is empty</p>
-				) : (
-					<>
-						{productsInCart.map((product) => (
-							<CartItem key={product.product.id} product={product} />
-						))}
-						<div className="mt-4 font-bold">Total Cost: {formatPrice(totalCost)}</div>
-						<CheckoutButton />
-					</>
-				)}
+				<div className="flex-grow overflow-y-auto">
+					{!productsInCart || productsInCart.length === 0 ? (
+						<p>Your cart is empty</p>
+					) : (
+						<>
+							{productsInCart.map((product) => (
+								<CartItem key={product.product.id} product={product} />
+							))}
+						</>
+					)}
+				</div>
+				<div className="mt-4 flex justify-between font-bold">
+					<span>Total Cost:</span>
+					<span>{formatPrice(totalCost)}</span>
+				</div>
+				<CheckoutButton />
 			</div>
 		</div>
 	)

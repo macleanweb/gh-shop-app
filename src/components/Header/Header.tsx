@@ -7,7 +7,7 @@ export default function Header() {
 
 	return (
 		<header className="sticky top-0 z-40 flex justify-between items-center p-4 bg-slate-700 text-slate-100">
-			<h1 className="text-2xl font-bold">Mock Store</h1>
+			<h1 className="mr-2 text-xl md:text-2xl font-bold">Mock Store</h1>
 			<nav>
 				<ul className="flex items-center space-x-4">
 					<li>
@@ -19,7 +19,7 @@ export default function Header() {
 					<li>
 						<button
 							onClick={openCart}
-							className="px-4 py-2 bg-pink-800 text-white rounded hover:bg-pink-900"
+							className="px-2 py-1 text-sm md:px-4 md:py-2 bg-pink-800 text-white rounded hover:bg-pink-900"
 						>
 							Cart {cartCount > 0 && `(${cartCount})`}
 						</button>
