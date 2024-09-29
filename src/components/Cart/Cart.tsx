@@ -7,6 +7,10 @@ import { CartItem } from '../CartItem/CartItem'
 export function Cart() {
 	const { isCartOpen, closeCart, cartData } = useAppContext()
 	const productsInCart = cartData?.products as CartProduct[] | null
+	const totalCost =
+		productsInCart?.reduce((total, product) => {
+			return total + product.product.price * product.quantity
+		}, 0) || 0
 
 	return (
 		<div
@@ -15,19 +19,23 @@ export function Cart() {
 			}`}
 		>
 			<div className="p-4">
-				<button className="absolute top-2 right-2" onClick={closeCart}>
+				<button
+					className="absolute top-2 right-2 px-3 py-1 bg-pink-800 text-white rounded-full hover:bg-pink-900 transition duration-200"
+					onClick={closeCart}
+				>
 					X
 				</button>
 				<h2 className="text-lg font-bold">Your Cart</h2>
 				{!productsInCart || productsInCart.length === 0 ? (
 					<p>Your cart is empty</p>
 				) : (
-					<div>
+					<>
 						{productsInCart.map((product) => (
 							<CartItem key={product.product.id} product={product} />
 						))}
+						<div className="mt-4 font-bold">Total Cost: {formatPrice(totalCost)}</div>
 						<CheckoutButton />
-					</div>
+					</>
 				)}
 			</div>
 		</div>
