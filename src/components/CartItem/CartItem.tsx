@@ -44,14 +44,14 @@ export function CartItem({ product }: CartItemProps) {
 				<button
 					className="px-2 mr-2 py-1 bg-pink-800 text-white rounded hover:bg-pink-900 disabled:opacity-50"
 					onClick={() => mutation.mutate('decrease')}
-					disabled={mutation.isPending}
+					disabled={mutation.isPending || cartData?.status === 'PURCHASED'}
 				>
 					-
 				</button>
 				<button
-					className="px-2 py-1 bg-pink-800 text-white rounded hover:bg-pink-900"
+					className="px-2 py-1 bg-pink-800 text-white rounded hover:bg-pink-900 disabled:opacity-50"
 					onClick={() => mutation.mutate('increase')}
-					disabled={mutation.isPending}
+					disabled={mutation.isPending || cartData?.status === 'PURCHASED'}
 				>
 					+
 				</button>
