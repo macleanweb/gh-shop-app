@@ -14,12 +14,12 @@ const fetchWithRetry = async <T>(url: string, retries: number = 3): Promise<T> =
 }
 
 const fetchProducts = (retries: number = 3): Promise<Product[]> => {
-	const API_URL = process.env.NEXT_API_URL
+	const API_URL = process.env.NEXT_PUBLIC_API_URL
 	return fetchWithRetry<Product[]>(`${API_URL}/products/`, retries)
 }
 
 const fetchCategories = (retries: number = 3): Promise<Category[]> => {
-	const API_URL = process.env.NEXT_API_URL
+	const API_URL = process.env.NEXT_PUBLIC_API_URL
 	return fetchWithRetry<Category[]>(`${API_URL}/categories/`, retries)
 }
 
